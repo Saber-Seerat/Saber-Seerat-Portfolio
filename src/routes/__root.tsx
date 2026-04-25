@@ -29,16 +29,28 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Mohammad Saber Seerat — Frontend Developer" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Mohammad Saber Seerat, a Frontend Developer specializing in React, JavaScript, and modern web applications.",
+      },
+      { name: "author", content: "Mohammad Saber Seerat" },
+      { property: "og:title", content: "Mohammad Saber Seerat — Frontend Developer" },
+      {
+        property: "og:description",
+        content: "React & JavaScript Developer building modern, responsive web applications.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -52,7 +64,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
