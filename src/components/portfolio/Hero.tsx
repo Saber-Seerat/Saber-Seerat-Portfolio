@@ -2,7 +2,10 @@ import { Github, ArrowRight, Download, Mail } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="top" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24">
+    <section
+      id="top"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24"
+    >
       <div className="grid-bg absolute inset-0 -z-10" />
       <div className="absolute left-1/2 top-1/3 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
 
@@ -22,10 +25,9 @@ export function Hero() {
         </h2>
 
         <p className="animate-fade-up delay-300 mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          Frontend Developer specializing in{" "}
-          <span className="font-mono text-primary">React</span> &{" "}
-          <span className="font-mono text-primary">JavaScript</span>. I build modern,
-          responsive web applications and love working with new technologies.
+          Frontend Developer specializing in <span className="font-mono text-primary">React</span> &{" "}
+          <span className="font-mono text-primary">JavaScript</span>. I build modern, responsive web
+          applications and love working with new technologies.
         </p>
 
         <div className="animate-fade-up delay-400 mt-10 flex flex-wrap items-center gap-3">

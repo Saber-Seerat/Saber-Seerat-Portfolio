@@ -29,14 +29,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mohammad Saber Seerat — Frontend Developer" },
+      { title: "Mohammad Saber Seerat — Full stack web developer" },
       {
         name: "description",
         content:
-          "Portfolio of Mohammad Saber Seerat, a Frontend Developer specializing in React, JavaScript, and modern web applications.",
+          "Portfolio of Mohammad Saber Seerat, a Full stack web developer specializing in React, JavaScript, and modern web applications.",
       },
       { name: "author", content: "Mohammad Saber Seerat" },
-      { property: "og:title", content: "Mohammad Saber Seerat — Frontend Developer" },
+      { property: "og:title", content: "Mohammad Saber Seerat — Full stack web developer" },
       {
         property: "og:description",
         content: "React & JavaScript Developer building modern, responsive web applications.",
