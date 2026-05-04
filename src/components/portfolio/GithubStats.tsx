@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Github, GitFork, Star, Users, BookOpen, ExternalLink } from "lucide-react";
+import { Github, GitFork, Star, Users, BookOpen } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 
 const USERNAME = "Saber-Seerat";
@@ -8,20 +8,12 @@ type GhUser = {
   public_repos: number;
   followers: number;
   following: number;
-  avatar_url: string;
-  name: string | null;
-  bio: string | null;
   html_url: string;
 };
 
 type GhRepo = {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string | null;
   stargazers_count: number;
   forks_count: number;
-  language: string | null;
   fork: boolean;
 };
 
@@ -37,7 +29,7 @@ export function GithubStats() {
       try {
         const [uRes, rRes] = await Promise.all([
           fetch(`https://api.github.com/users/${USERNAME}`),
-          fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100`),
+          fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100`),
         ]);
         if (!uRes.ok || !rRes.ok) throw new Error("GitHub API error");
         const uData: GhUser = await uRes.json();
@@ -58,10 +50,6 @@ export function GithubStats() {
 
   const totalStars = repos.reduce((s, r) => s + r.stargazers_count, 0);
   const totalForks = repos.reduce((s, r) => s + r.forks_count, 0);
-  const topRepos = [...repos]
-    .filter((r) => !r.fork)
-    .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    .slice(0, 4);
 
   const stats = [
     { icon: BookOpen, label: "Repositories", value: user?.public_repos ?? 0 },
@@ -71,25 +59,24 @@ export function GithubStats() {
   ];
 
   return (
-    <section className="px-6 py-24">
+    <section id="github" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <SectionHeader index="05" title="GitHub Stats" />
 
-        {error && (
+        {error ? (
           <div className="rounded-lg border border-border bg-surface p-6 text-center text-muted-foreground">
-            Couldn't load live GitHub data.{" "}
+            Couldn't load live GitHub data. Visit{" "}
             <a
               href={`https://github.com/${USERNAME}`}
               target="_blank"
               rel="noreferrer"
               className="text-primary hover:underline"
             >
-              Visit profile →
+              github.com/{USERNAME}
             </a>
+            .
           </div>
-        )}
-
-        {!error && (
+        ) : (
           <>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {stats.map((s) => (
@@ -104,43 +91,6 @@ export function GithubStats() {
                   <div className="text-xs text-muted-foreground">{s.label}</div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {(loading ? Array.from({ length: 4 }) : topRepos).map((repo, i) => {
-                const r = repo as GhRepo | undefined;
-                return (
-                  <a
-                    key={r?.id ?? i}
-                    href={r?.html_url ?? "#"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex flex-col rounded-lg border border-border bg-surface p-5 transition-all hover:border-primary/50"
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-2 font-mono text-sm font-semibold text-foreground group-hover:text-primary">
-                        <BookOpen className="h-4 w-4 text-primary" />
-                        {r?.name ?? "loading..."}
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                    </div>
-                    <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground">
-                      {r?.description ?? (loading ? "" : "No description")}
-                    </p>
-                    <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground">
-                      {r?.language && <span>{r.language}</span>}
-                      <span className="flex items-center gap-1">
-                        <Star className="h-3 w-3" />
-                        {r?.stargazers_count ?? 0}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <GitFork className="h-3 w-3" />
-                        {r?.forks_count ?? 0}
-                      </span>
-                    </div>
-                  </a>
-                );
-              })}
             </div>
 
             <div className="mt-8 text-center">
