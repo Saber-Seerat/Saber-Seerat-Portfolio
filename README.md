@@ -4,9 +4,8 @@ A modern, responsive personal portfolio website built to showcase my work as a
 Frontend Developer specializing in **React** and **JavaScript**. Designed with
 a clean, GitHub-inspired aesthetic, dark/light mode, and smooth animations.
 
-🌐 **Live Demo:** _coming soon_
 
----
+
 
 ## ✨ Features
 

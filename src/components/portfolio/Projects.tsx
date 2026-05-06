@@ -15,9 +15,9 @@ const projects = [
     github: "https://github.com/Saber-Seerat",
   },
   {
-    title: "Todo List App",
-    desc: "A modern todo manager with persistent storage, filtering, and a smooth UX for managing daily tasks efficiently.",
-    tech: ["React", "JavaScript", "CSS"],
+    title: "Saber-Seerat-Portfolio",
+    desc: "A modern, responsive personal portfolio website built to showcase my work as a Frontend Developer specializing in React and JavaScript. Designed with a clean, GitHub-inspired aesthetic, dark/light mode, and smooth animations.",
+    tech: ["React", "Typescript", "Tailwindcss"],
     github: "https://github.com/Saber-Seerat",
   },
 ];
