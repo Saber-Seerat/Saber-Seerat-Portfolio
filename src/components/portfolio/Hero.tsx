@@ -25,7 +25,7 @@ export function Hero() {
         </h2>
 
         <p className="animate-fade-up delay-300 mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          Frontend Developer specializing in <span className="font-mono text-primary">React</span> &{" "}
+          Full Stack Web Developer specializing in <span className="font-mono text-primary">React</span> &{" "}
           <span className="font-mono text-primary">JavaScript</span>. I build modern, responsive web
           applications and love working with new technologies.
         </p>
